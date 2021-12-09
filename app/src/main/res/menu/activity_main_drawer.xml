@@ -1,38 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Reports">
+    <!--<item android:title="Menu">
         <menu>
             <group
                 android:id="@+id/m1"
-                android:checkableBehavior="single">
+                android:checkableBehavior="single">-->
                 <item
-                    android:id="@+id/drawer_topup"
+                    android:id="@+id/drawer_users"
                     android:icon="@drawable/cap_school"
                     android:visible="true"
-                    android:title="Report" />
+                    android:title="Users" />
                 <item
-                    android:id="@+id/drawer_server_report"
+                    android:id="@+id/drawer_attendee"
                     android:icon="@drawable/cap_school"
-                    android:title="Server Report" />
+                    android:visible="true"
+                    android:title="Attendees" />
                 <item
-                    android:id="@+id/drawer_web_report"
+                    android:id="@+id/drawer_councelling"
+                    android:icon="@drawable/cap_school"
+                    android:title="Councelling" />
+                <item
+                    android:id="@+id/drawer_events"
+                    android:icon="@drawable/cap_school"
+                    android:visible="true"
+                    android:title="Events" />
+                <item
+                    android:id="@+id/drawer_trainee"
+                    android:icon="@drawable/cap_school"
+                    android:title="Trainees" />
+                <item
+                    android:id="@+id/drawer_batches"
+                    android:icon="@drawable/cap_school"
+                    android:visible="true"
+                    android:title="Batches" />
+                <item
+                    android:id="@+id/drawer_condidate_eligible"
                     android:icon="@drawable/cap_school"
                     android:visible="false"
-                    android:title="Web Report" />
+                    android:title="Eligible Condidate List" />
                 <item
-                    android:id="@+id/drawer_tkc"
-                    android:icon="@drawable/cap_school"
-                    android:title="NEFT Report" />
-                <item
-                    android:id="@+id/drawer_rep_datewise"
+                    android:id="@+id/drawer_enrolments"
                     android:icon="@drawable/cap_school"
                     android:visible="false"
-                    android:title="NEFT Report(Date wise)" />
-            </group>
-        </menu>
-    </item>
-    <item android:title="Complaint">
+                    android:title="Enrolments" />
+                <item
+                    android:id="@+id/drawer_palcement"
+                    android:icon="@drawable/cap_school"
+                    android:visible="false"
+                    android:title="Placements" />
+                <item
+                    android:id="@+id/drawer_cert"
+                    android:icon="@drawable/cap_school"
+                    android:visible="false"
+                    android:title="Certification" />
+
+                <item
+                    android:id="@+id/drawer_train"
+                    android:icon="@drawable/cap_school"
+                    android:visible="true"
+                    android:title="Training" />
+    <!--</group>
+</menu>
+</item>-->
+   <!-- <item android:title="Complaint">
         <menu>
             <group
                 android:id="@+id/m2"
@@ -49,9 +80,9 @@
 
             </group>
         </menu>
-    </item>
+    </item>-->
 
-    <item android:title="Unbilled Consumer">
+   <!-- <item android:title="Unbilled Consumer">
         <menu>
             <group
                 android:id="@+id/m3"
@@ -68,5 +99,5 @@
 
             </group>
         </menu>
-    </item>
+    </item>-->
 </menu>

@@ -5,12 +5,14 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.SQLException;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.provider.Telephony;
 import android.telephony.TelephonyManager;
 import android.text.method.HideReturnsTransformationMethod;
@@ -33,6 +35,7 @@ import androidx.core.content.ContextCompat;
 
 
 import com.example.sgra.utilities.MarshmallowPermission;
+import com.example.sgra.utilities.Utiilties;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -61,18 +64,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     MarshmallowPermission MARSHMALLOW_PERMISSION;
     String serial_id = "";
     TextView text_ver,text_head;
-    SmsReceiver smsReceiver;
+    //SmsReceiver smsReceiver;
     IntentFilter filter;
     private boolean initse;
     private ProgressDialog dialog1;
 
-    private SmsVerificationService smsVerificationService;
+    //private SmsVerificationService smsVerificationService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        DataBaseHelper db = new DataBaseHelper(this);
+        /*DataBaseHelper db = new DataBaseHelper(this);
         try {
             db.createDataBase();
         } catch (IOException ioe) {
@@ -83,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } catch (SQLException sqle) {
             throw sqle;
 
-        }
+        }*/
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // Call some material design APIs here
@@ -120,11 +123,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        if (CommonPref.getUserDetails(LoginActivity.this)!=null){
+        /*if (CommonPref.getUserDetails(LoginActivity.this)!=null){
             if (!CommonPref.getUserDetails(LoginActivity.this).getUserID().trim().equals("")){
                 edit_user_name.setText(""+CommonPref.getUserDetails(LoginActivity.this).getUserID());
             }
-        }
+        }*/
         initse=true;
     }
     @Override
@@ -140,21 +143,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else if (edit_pass.getText().toString().trim().equals("")) {
             Toast.makeText(this, "Enter Password", Toast.LENGTH_SHORT).show();
         } else {
-            filter = new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION);
-            smsReceiver=new SmsReceiver();
-            registerReceiver(smsReceiver, filter);
-            SmsReceiver.bindListener(new SmsListener() {
-                @Override
-                public void messageReceived(String messageText) {
-                   // text_resend.setVisibility(View.GONE);
-                    Log.d("activity",""+messageText);
-                    dialog1.dismiss();
-                    //if (smsVerificationService!=null && smsVerificationService.getStatus()!=SmsVerificationService.Status.RUNNING) {
-                        smsVerificationService = (SmsVerificationService) new SmsVerificationService(LoginActivity.this,imei,serial_id).execute(edit_user_name.getText().toString().trim() + "|" + imei.trim() + "|" + messageText.split(" ")[0].trim());
-                    //}
-                }
-            });
-            new LoginLoader(LoginActivity.this,imei,serial_id).execute(edit_user_name.getText().toString() + "|" + edit_pass.getText().toString() + "|" + imei + "|" + serial_id);
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
         }
 
     }
@@ -171,8 +160,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                     imei = tm.getDeviceId();
                 } else {
-                    //imei = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase();
-                    imei = Utiilties.getIMEI_forAndroid10(LoginActivity.this);
+                    imei = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase();
+                    //imei = Utiilties.getIMEI_forAndroid10(LoginActivity.this);
                 }
 
             } catch (Exception e) {
@@ -185,8 +174,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                     imei = tm.getDeviceId();
                 } else {
-                    //imei = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase();
-                    imei = Utiilties.getIMEI_forAndroid10(LoginActivity.this);
+                    imei = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase();
+                    //imei = Utiilties.getIMEI_forAndroid10(LoginActivity.this);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -294,6 +283,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_ACCOUNTS:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

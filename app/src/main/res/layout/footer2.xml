@@ -9,5 +9,5 @@
         android:textColor="@android:color/white"
         android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
-        android:text="Services provided by: NIC Bihar"/>
+        android:text="SGRS Academic Pvt. Ltd."/>
 </LinearLayout>

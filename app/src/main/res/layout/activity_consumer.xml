@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorGrayLight"
-    tools:context="com.bih.nic.e_wallet.activities.TopupActivity">
+    tools:context="com.example.sgra.ListActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_lay_main"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme">
+            app:popupTheme="@style/Theme.AppCompat">
 
             <!--<include layout="@layout/header" />-->
         </androidx.appcompat.widget.Toolbar>

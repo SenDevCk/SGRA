@@ -6,7 +6,8 @@ import android.net.Uri;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.bih.nic.e_wallet.entity.UserInfo2;
+import com.example.sgra.models.UserInfo2;
+
 
 /**
  * Created by NIC2 on 5/10/2018.

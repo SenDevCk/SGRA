@@ -88,9 +88,9 @@ public class SplashActivity extends AppCompatActivity {
             throw sqle;
 
         }*/
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean net = false;
-        TelephonyManager tm = null;
+        //prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //boolean net = false;
+        //TelephonyManager tm = null;
 
     }
 
@@ -109,6 +109,7 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingPermission")
     public void readPhoneState() {
         MARSHMALLOW_PERMISSION = new MarshmallowPermission(SplashActivity.this, Manifest.permission.READ_PHONE_STATE);
         if (MARSHMALLOW_PERMISSION.result == -1 || MARSHMALLOW_PERMISSION.result == 0) {
@@ -128,7 +129,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                     imei = tm.getDeviceId();
                 } else {
-                    imei = Utiilties.getIMEI_forAndroid10(SplashActivity.this);
+                    imei = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase();
                 }
                 //imei = "861878037876718";
             } catch (Exception e) {
@@ -141,7 +142,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                     imei = tm.getDeviceId();
                 } else {
-                    imei = Utiilties.getIMEI_forAndroid10(SplashActivity.this);
+                    imei = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase();
                 }
                 //	imei = "861878037876718";
             } catch (Exception e) {
@@ -329,7 +330,7 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-    protected void checkOnline() {
+   /* protected void checkOnline() {
         // TODO Auto-generated method stub
         super.onResume();
         String dateToStr = Utiilties.getCurrentDateWithTime();
@@ -409,7 +410,7 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         }
-    }
+    }*/
 
     private void loadAppData() {
         //new CheckMasterLoader().execute();
@@ -517,7 +518,7 @@ public class SplashActivity extends AppCompatActivity {
                     readPhoneState();
                     start();
                 }
-            }, 1000);
+            }, 3000);
         //}
     }
 

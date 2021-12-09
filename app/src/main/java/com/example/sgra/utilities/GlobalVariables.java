@@ -1,8 +1,9 @@
 package com.example.sgra.utilities;
 
 
-import com.bih.nic.e_wallet.entity.ReportEntity;
-import com.bih.nic.e_wallet.entity.UserInfo2;
+
+
+import com.example.sgra.models.UserInfo2;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  */
 public class GlobalVariables {
 	public static UserInfo2 LoggedUser;
-	public static ArrayList<ReportEntity> reportEntities;
+	//public static ArrayList<ReportEntity> reportEntities;
 	public static boolean active = false;
 	public static String bank_name="";
 }

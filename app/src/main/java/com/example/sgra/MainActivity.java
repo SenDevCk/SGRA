@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             String code_v = String.valueOf(getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
             TextView app_name_tip = (TextView) navigationView.findViewById(R.id.app_name_tip);
-            app_name_tip.setText("E-Wallet ( " + code_v + "." + version + " ) V");
+            app_name_tip.setText(getResources().getString(R.string.app_name)+" ( " + code_v + "." + version + " ) V");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -190,35 +190,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.drawer_tkc) {
-            //dialogNeft();
+        if (id == R.id.drawer_users) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
 
-        } else if (id == R.id.drawer_topup) {
-            //dialogReport(1);
-        } else if (id == R.id.drawer_server_report) {
-            //dialogReport(2);
-        } else if (id == R.id.drawer_gri_sin) {
-            //startActivity(new Intent(MainActivity.this, GrievanceEntryActivity.class));
-        } else if (id == R.id.drawer_gri_sts) {
-            //startActivity(new Intent(MainActivity.this, GrivanceListActivity.class));
-        } else if (id == R.id.drawer_rep_datewise) {
-            //startActivity(new Intent(MainActivity.this, NeftDateWiseReportActivity.class));
-        } else if (id == R.id.drawer_dow_un) {
+        } else if (id == R.id.drawer_batches) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+        } else if (id == R.id.drawer_attendee) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+        } else if (id == R.id.drawer_cert) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+        } else if (id == R.id.drawer_condidate_eligible) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+        } else if (id == R.id.drawer_councelling) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+        } else if (id == R.id.drawer_enrolments) {
            /* if (Utiilties.isOnline(MainActivity.this)) {
                 UserInfo2 userInfo2 = CommonPref.getUserDetails(MainActivity.this);
                 new MRUAlocatar(MainActivity.this, false).execute(userInfo2.getUserID() + "|" + userInfo2.getPassword() + "|" + userInfo2.getImeiNo() + "|" + userInfo2.getSerialNo());
             } else {
                 Toast.makeText(MainActivity.this, "No Internet Connection !", Toast.LENGTH_SHORT).show();
             }*/
-        } else if (id == R.id.drawer_list_un) {
-            //startActivity(new Intent(MainActivity.this, UnbilledConsumerListActivity.class));
+        } else if (id == R.id.drawer_palcement) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
 
-        } else if (id == R.id.drawer_web_report) {
-            //UserInfo2 userInfo2 = CommonPref.getUserDetails(MainActivity.this);
-            //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://energybills.bsphcl.co.in/WebApplication1/newjsp.jsp?walletId=" + userInfo2.getWalletId().trim())));
-            //startActivity(new Intent(MainActivity.this,WebReportActivity.class));
-        } else {
-            Toast.makeText(this, "Under Process..", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.drawer_events) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));} else {
+            //Toast.makeText(this, "Under Process..", Toast.LENGTH_SHORT).show();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

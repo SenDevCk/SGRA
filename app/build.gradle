@@ -37,4 +37,15 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //implementation 'com.github.mukeshsolanki:android-otpview-pinview:1.0.2'
+    //implementation 'androidx.browser:browser:1.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.daasuu:CountAnimationTextView:0.1.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
 }
